@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    GET API Assignment
+    <div id="app"></div>
+  </body>
+  <script>
+    // 8gaxWmpBvTEZu2CgPHv6fLMLi7jwNrnMifRrKCsdcMVNLTKflMRdFm7O // my API token
+    fetch("https://api.pexels.com/v1/curated", {
+      headers: {
+        Authorization: "8gaxWmpBvTEZu2CgPHv6fLMLi7jwNrnMifRrKCsdcMVNLTKflMRdFm7O",
+      },
+    })
+      .then((response) => response.json())
+      .then((body) => {
+        const imageList = body.photos.map((photo) => `<img src="${photo.src.tiny}"/>`);
+
+        return imageList;
+      })
+      .then((list) => {
+        document.getElementById("app").innerHTML = list;
+      })
+      .catch((err) => {
+        debugger;
+      });
+  </script>
+</html>
+
+<!-- Challenge -->
+<!-- Guna search for photos dalam API documentation -->
+<!-- Macam search image function dalam search bar & submit -->
